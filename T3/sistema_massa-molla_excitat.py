@@ -2,8 +2,6 @@
 '''
 SF-76
 sistema_massa-molla_excitat. Excitació amb una funció senoidal. Diferents casos
-============================================
-odeint: simulació . Transparència: EDO2(21)
 
 cd /home/joan/UPC_2021/CNED/apunts/python/T3/
 PS1="$ "
