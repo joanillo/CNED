@@ -55,17 +55,20 @@ def secant(f,a,b,N):
         return None
     a_n = a
     b_n = b
-    for n in range(1,N+1):
+    for n in range(0,N):
 
         m_n = a_n - f(a_n)*(b_n - a_n)/(f(b_n) - f(a_n))
         f_m_n = f(m_n)
 
-        print('m_n=',m_n)
-        print('f_m_n=',f_m_n)
-        if n!=1:
-            rn = abs(m_n-m_nant)/abs(m_n)
-            print('rn=',rn)
+        if n > 0:
+            r_n = abs(m_n-m_nant)/abs(m_n)
+            print('r_'+str(n-1),' = ',r_n)
+
         print('---')
+        print('it',n)
+        print('m_'+str(n),' = ', m_n)
+        print('f_m_'+str(n),' = ',f_m_n)
+
         if f(a_n)*f_m_n < 0:
             a_n = a_n
             b_n = m_n
@@ -80,12 +83,14 @@ def secant(f,a,b,N):
         else:
             print("Secant method fails.")
             return None
+
+    print('---')
     return a_n - f(a_n)*(b_n - a_n)/(f(b_n) - f(a_n))
 # ======================================================
 p = lambda x: x**3 - 6*x**2 + 9*x - 6
 
-#approx = secant(p,2,3,20) #Secant method fails. (a la segona iteració la recta secant és horitzontal)
-approx = secant(p,2,5,20) 
+approx = secant(p,2,3,20) #Secant method fails. (a la segona iteració la recta secant és horitzontal)
+#approx = secant(p,2,5,20) 
 print(approx)
 
 # ==============================
@@ -94,6 +99,7 @@ x = np.arange(2.0, 5.0, .005)
 y = x**3 - 6*x**2 + 9*x - 6
 
 fig, ax = plt.subplots()
+plt.axhline(0, color='black')
 ax.plot(x, y)
 
 ax.set(xlabel='x', ylabel='y', title='x^3 - 6x^2 + 9x - 6')

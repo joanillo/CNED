@@ -1,7 +1,7 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 
 '''
-exemple: sin(x)-x
+exemple: sin(sqrt(x))-x
 modificació per tal d'introduir el concepte de tolerància, tol
 rk = abs(xk+1 - xk)/abs(xk+1) < tol ; f(xk)<tol
 sin(sqrt(x))-x, trobar el 0 pel mètode de la bisecció
@@ -50,23 +50,21 @@ def bisection(f,a,b,N, tol):
         return None
     a_n = a
     b_n = b
-    for n in range(1,N+1):
+    for n in range(0,N):
         m_n = (a_n + b_n)/2
         f_m_n = f(m_n)
+        if (n>0):
+            rk = np.abs((m_n-a_n)/m_n)
+            print('rk =',rk)
+            if rk < tol and np.abs(f_m_n) < tol:
+            #if rk < tol: #només considerem el tolx
+                print("hem arribat al tol")
+                return m_n
         print ('-----')
         print ('it',n)
         print ('a =',m_n)
         print('fxk =',np.abs(f_m_n))
-        if f(a_n)*f_m_n <= 0:
-            rk = np.abs((m_n-a_n)/m_n)
-        else:
-            rk = np.abs((m_n-b_n)/m_n)
-        print('rk =',rk)
-        if rk < tol and np.abs(f_m_n) < tol: # si no distingim entre tolx i toly
-        #if rk < tol: #només considerem el tolx
-            print("hem arribat al tol")
-            return m_n
-        elif f(a_n)*f_m_n < 0:
+        if f(a_n)*f_m_n < 0:
             a_n = a_n
             b_n = m_n
         elif f(b_n)*f_m_n < 0:
@@ -84,21 +82,23 @@ def bisection(f,a,b,N, tol):
 # ==============================
 
 f = lambda x: np.sin(np.sqrt(x))-x
-tol = 0.05
-#tol = 0.001 #línia 55, només hem de considerar tolx. Dóna 7 iteracions (1->7), però també ho podem pensar com a (0->6)
+#tol = 0.05
+tol = 0.001 #línia 55, només hem de considerar tolx. Dóna 7 iteracions (1->7), però també ho podem pensar com a (0->6)
 approx_phi = bisection(f,.75,.8,1000,tol)
 print('=====')
 print('resultat:',approx_phi)
 
 # ==============================
-
+# gràfica:
 x = np.arange(.5, .9, .005)
 y = np.sin(np.sqrt(x))-x
 
 fig, ax = plt.subplots()
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
 ax.plot(x, y)
 
-ax.set(xlabel='x', ylabel='y', title='sin(x) - x')
+ax.set(xlabel='x', ylabel='y', title='sin(sqrt(x)) - x')
 ax.grid()
 
 fig.savefig("../img/T1/biseccio3.png")

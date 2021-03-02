@@ -50,23 +50,22 @@ def bisection(f,a,b,N, tol):
         return None
     a_n = a
     b_n = b
-    for n in range(1,N+1):
+    for n in range(0,N):
         m_n = (a_n + b_n)/2
         f_m_n = f(m_n)
+        if (n>0):
+            rk = np.abs((m_n-a_n)/m_n)
+            print('rk =',rk)
+            if rk < tol and np.abs(f_m_n) < tol:
+             #if rk < tol: #només considerem el tolx
+                print("hem arribat al tol")
+                return m_n
         print ('-----')
         print ('it',n)
         print ('a =',m_n)
         print('fxk =',np.abs(f_m_n))
-        if f(a_n)*f_m_n <= 0:
-            rk = np.abs((m_n-a_n)/m_n)
-        else:
-            rk = np.abs((m_n-b_n)/m_n)
-        print('rk =',rk)
-        if rk < tol and np.abs(f_m_n) < tol: # si no distingim entre tolx i toly
-        #if rk < tol: #només considerem el tolx
-            print("hem arribat al tol")
-            return m_n
-        elif f(a_n)*f_m_n < 0:
+
+        if f(a_n)*f_m_n < 0:
             a_n = a_n
             b_n = m_n
         elif f(b_n)*f_m_n < 0:
@@ -96,6 +95,8 @@ x = np.arange(-2.0, 0.0, .005)
 y = x**3 - x + 1
 
 fig, ax = plt.subplots()
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
 ax.plot(x, y)
 
 ax.set(xlabel='x', ylabel='y', title='x^3 - x + 1')

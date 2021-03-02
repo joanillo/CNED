@@ -29,8 +29,8 @@ g = 9.81  # gravity acceleration
 v0 = np.zeros(4)
 # The initial speed vector is oriented
 # to the top right.
-v0[2] = 4.
-v0[3] = 10.
+v0[2] = 4. #vx
+v0[3] = 10. #vy
 
 def f(v, t0, k):
     # v has four components: v=[u, u'].
@@ -58,9 +58,9 @@ for k in np.linspace(0., 1., 5):
 ax.legend()
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 6)
-plt.xlabel('t')
-plt.ylabel('y')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
 plt.title('Trajectòria parabòlica amb diferents fregaments')
 fig = plt.gcf()
 plt.show()
-fig.savefig("../img/T2/trajectoria_parabolica")
+fig.savefig("../img/T2/trajectoria_parabolica.png")

@@ -26,4 +26,4 @@ def f(x):
 root = optimize.brentq(f, -2, 0)
 print(root) # -1.0
 root = optimize.brentq(f, 0, 2)
-print(root) # -1
+print(root) # +1

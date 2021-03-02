@@ -1,6 +1,9 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
 ZF-52: xln(x)-1, trobar el 0 pel mètode de la bisecció
+
+https://www.math.ubc.ca/~pwalls/math-python/roots-optimization/bisection/
+
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
 python3 biseccio1.py
@@ -46,7 +49,7 @@ def bisection(f,a,b,N):
         return None
     a_n = a
     b_n = b
-    for n in range(1,N+1):
+    for n in range(0,N):
         m_n = (a_n + b_n)/2
         f_m_n = f(m_n)
         print ('-----')

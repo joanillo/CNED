@@ -3,7 +3,7 @@
 Mètode de Newton
 https://www.math.ubc.ca/~pwalls/math-python/roots-optimization/newton/
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
 python3 newton2.py
 '''
@@ -58,11 +58,15 @@ def newton(f,Df,x0,epsilon,max_iter):
     xn = x0
     for n in range(0,max_iter):
         fxn = f(xn)
-        if n!=0:
+        if n > 0:
             rn = abs(xn-xnant)/abs(xn)
-            print('rn=',rn)
-        print('fxn=',fxn)
+            print('r'+str(n-1),' = ',rn)
+            rn_ant = rn
+
         print('---')
+        print('it',n)
+        print('x'+str(n),' = ', xn)
+        print('fx'+str(n),' = ',fxn)
         if abs(fxn) < epsilon:
             print('Found solution after',n,'iterations.')
             return xn
@@ -72,7 +76,8 @@ def newton(f,Df,x0,epsilon,max_iter):
             return None
         xnant = xn
         xn = xn - fxn/Dfxn
-    print('Després de',max_iter,'iteracions hem obtingut:')
+    print('---')
+    print('Després de',max_iter-1,'iteracions hem obtingut:')
     print('(',xn,',',fxn,')')
     return None
 # ==============
@@ -82,7 +87,7 @@ Dp = lambda x: 3*x**2 - 12*x + 9
 approx = newton(p,Dp,5.0,1e-18,5)
 #approx = newton(p,Dp,3,1e-16,5) # Zero derivative. No solution found.
 #approx = newton(p,Dp,3.01,1e-16,20)
-#approx = newton(p,Dp,2.0,1e-16,20)
+#approx = newton(p,Dp,2.0,1e-16,20) # amb 20 iteracions no trobem la solució, amb 50 iteracions sí que la trobem
 print(approx)
 
 # ==============
@@ -91,6 +96,7 @@ x = np.arange(2.0, 5.0, .005)
 y = x**3 - 6*x**2 + 9*x - 6
 
 fig, ax = plt.subplots()
+plt.axhline(0, color='black')
 ax.plot(x, y)
 
 ax.set(xlabel='x', ylabel='y', title='x^3 - 6x^2 + 9x - 6')
