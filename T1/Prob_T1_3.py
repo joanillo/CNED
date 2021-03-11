@@ -4,10 +4,9 @@
 exemple: x^3-x+1
 modificació per tal d'introduir el concepte de tolerància, tol
 rk = abs(xk+1 - xk)/abs(xk+1) < tol ; f(xk)<tol
-sin(sqrt(x))-x, trobar el 0 pel mètode de la bisecció
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
-python3 biseccio4.py
+python3 Prob_T1_3.py
 '''
 import matplotlib
 import matplotlib.pyplot as plt
@@ -56,7 +55,7 @@ def bisection(f,a,b,N, tol):
         if (n>0):
             rk = np.abs((m_n-a_n)/m_n)
             print('rk =',rk)
-            if rk < tol and np.abs(f_m_n) < tol:
+            if rk < tol and np.abs(f(a_n)) < tol:
              #if rk < tol: #només considerem el tolx
                 print("hem arribat al tol")
                 return m_n
@@ -84,7 +83,6 @@ def bisection(f,a,b,N, tol):
 
 f = lambda x: x**3 - x + 1
 tol = 0.00005 #tolx = tolf
-#tol = 0.00005 #línia 55, només hem de considerar tolx. Dóna 7 iteracions (1->7), però també ho podem pensar com a (0->6)
 approx_phi = bisection(f,-2.0,0.0,1000,tol)
 print('=====')
 print('resultat:',approx_phi)
@@ -102,6 +100,6 @@ ax.plot(x, y)
 ax.set(xlabel='x', ylabel='y', title='x^3 - x + 1')
 ax.grid()
 
-fig.savefig("../img/T1/biseccio4.png")
+fig.savefig("../img/T1/Prob_T1_3.png")
 plt.show()
 

@@ -237,6 +237,7 @@ elif (tipus == 'newton'):
     print (approx)
 
 elif (tipus == 'secant'):
+    print('== Mètode de la Secant ==')
     f = lambda x: Decimal(x)**Decimal(2.0) - Decimal(2.0) # f(x) = x^2 - 2
     approx = secant(f,1.0,2.0,15) 
     print(approx)

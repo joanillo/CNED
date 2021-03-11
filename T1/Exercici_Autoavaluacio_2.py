@@ -6,7 +6,7 @@ convergència subòptima cercant el zero x=1 (arrel triple); convergència òpti
 Mètode de Newton
 https://www.math.ubc.ca/~pwalls/math-python/roots-optimization/newton/
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T1
 PS1="$ "
 python3 Exercici_Autoavaluacio_2.py
 '''
@@ -65,8 +65,8 @@ def newton(f,Df,x0,epsilon,max_iter):
 p = lambda x: -x**5 + 3*x**4 - x**3 - 5*x**2 + 6*x - 2
 Dp = lambda x: -5*x**4 + 12*x**3 - 3*x**2 - 10*x + 6
 
-#approx = newton(p,Dp,0.5,1e-4,20) # transparència ZF-99 convergència subòptima cercant el zero x=1 (arrel triple)
-approx = newton(p,Dp,2.0,1e-10,40) # transparència ZF-99 convergència òptima cercant el zero x=sqrt(2) (arrel simple)
+approx = newton(p,Dp,0.5,1e-4,20) # transparència ZF-99 convergència subòptima cercant el zero x=1 (arrel triple)
+#approx = newton(p,Dp,2.0,1e-10,40) # transparència ZF-99 convergència òptima cercant el zero x=sqrt(2) (arrel simple)
 print(approx)
 
 # ==============

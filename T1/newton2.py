@@ -77,7 +77,7 @@ def newton(f,Df,x0,epsilon,max_iter):
         xnant = xn
         xn = xn - fxn/Dfxn
     print('---')
-    print('Després de',max_iter-1,'iteracions hem obtingut:')
+    print('Després de',max_iter,'iteracions hem obtingut:')
     print('(',xn,',',fxn,')')
     return None
 # ==============

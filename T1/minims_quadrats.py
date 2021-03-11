@@ -1,6 +1,6 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
-AF-73: Aproximació per mínims quadrats
+AF-73: Aproximació per mínims quadrats (regressió lineal)
 *https://unipython.com/ajuste-minimos-cuadrados/
 *https://www.iartificial.net/regresion-lineal-con-ejemplos-en-python/
 

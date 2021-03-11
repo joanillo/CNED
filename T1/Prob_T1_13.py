@@ -112,8 +112,8 @@ def secant(f,a,b,N):
             rk = np.abs((m_n-m_nant)/m_n)
             print('rk =',rk)
             list_secant.append(rk)
-            rk_ant = rk
             p = (np.log(rk) / np.log(rk_ant))
+            rk_ant = rk
             print('p = ', p)
         elif (n>0):
             #per calcular rk necessitem el valor següent
@@ -139,7 +139,7 @@ def secant(f,a,b,N):
 f = lambda x: 2 - x**3
 Df = lambda x: -3*x**2
 # ==============================
-
+print('== Mètode de la bisecció ==')
 list_bisection = []
 approx = bisection(f,1.0,2.0,N)
 print('=====')
@@ -147,6 +147,7 @@ print('Bisecció resultat:',approx)
 print('=====')
 # ==============================
 
+print('== Mètode de Newton ==')
 list_newton = []
 approx = newton(f,Df,1,N)
 print('=====')
@@ -154,7 +155,7 @@ print('Newton resultat:',approx)
 print('=====')
 # ==============================
 
-# a mi la secant no em surt superlineal (ToDo)
+print('== Mètode de la Secant ==')
 list_secant = []
 approx = secant(f,1,2,N)
 print('=====')
