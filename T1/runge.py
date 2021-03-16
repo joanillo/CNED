@@ -1,6 +1,6 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
-Interpolació pura. Matriu de Vandermonde
+Interpolació pura. Paradoxa de Runge
 https://www.unioviedo.es/compnum/laboratorios_py/new/05_Interpol_polinomica.html
 
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/

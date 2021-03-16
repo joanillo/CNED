@@ -1,7 +1,5 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
-# https://wwwstaff.ari.uni-heidelberg.de/mitarbeiter/rschmidt/pycourse/html/15.html
-
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
 python3 splines4.py

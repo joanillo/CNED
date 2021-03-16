@@ -2,6 +2,12 @@
 #https://hub.packtpub.com/how-to-compute-interpolation-in-scipy/
 # interpolació amb spline de 10 punts que responen a un sinus. S'aconsegueix recostruir una funció en forma de sinus.
 
+'''
+cd /home/joan/UPC_2021/CNED/apunts/python/T1/
+PS1="$ "
+python3 splines3.py
+'''
+
 from scipy import interpolate
 import numpy as np
 import matplotlib.pyplot as plt

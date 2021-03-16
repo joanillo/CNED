@@ -21,7 +21,7 @@ for i in range(0,len(titol)-1):
 print(titol)
 # ==============
 
-# tir parabòlic: y = vy*t - .5gt^2
+# descàrrega del condensador
 vo = 5 # volts
 R = 10 # Kohm
 C = 1 # mF

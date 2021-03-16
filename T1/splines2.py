@@ -3,7 +3,7 @@
 '''
 *https://stackoverflow.com/questions/31543775/how-to-perform-cubic-spline-interpolation-in-python
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
 python3 splines2.py
 '''

@@ -1,4 +1,9 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
+'''
+cd /home/joan/UPC_2021/CNED/apunts/python/T1/
+PS1="$ "
+python3 splines5.py
+'''
 import matplotlib.pyplot as plt
 from scipy import interpolate
 import numpy as np
