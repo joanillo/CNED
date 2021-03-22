@@ -1,15 +1,16 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
-IN-11, IN-31
+IN-11, IN-31 (exemple arctan)
 https://www.math.ubc.ca/~pwalls/math-python/integration/trapezoid-rule/
 Integral amb el mètode del trapezoid simple (N=1) o compost (N>1)
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
-python3 trapezoid.py
+python3 trapezoid_exp_x2.py
 '''
 
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import integrate
 import os
 
 # ==============
@@ -55,37 +56,10 @@ def trapz(f,a,b,N=50):
     T = (dx/2) * np.sum(y_right + y_left)
     return T
 
-# primer exemple: e^(-x^2)
-x = np.linspace(-0.5,1.5,100)
-y = np.exp(-x**2)
 
-fig, ax = plt.subplots()
-ax.plot(x, y)
-
-ax.set(xlabel='x', ylabel='y', title='exp(-x^2)')
-ax.grid()
-
-x0 = 0; x1 = 1;
-y0 = np.exp(-x0**2); y1 = np.exp(-x1**2);
-plt.fill_between([x0,x1],[y0,y1])
-
-plt.xlim([-0.5,1.5]); plt.ylim([0,1.5]);
-fig = plt.gcf()
-plt.show()
-fig.savefig("../img/T1/IN-11_trapezoid_ex2_simple.png")
-
-#Approximate the integral by the area of the trapezoid:
-A = 0.5*(y1 + y0)*(x1 - x0)
-print("Trapezoid area:", A)
-
-# més exemples:
-print(trapz(np.sin,0,np.pi/2,1000)) # integral de sin(x) entre 0 i pi/2
-print(trapz(lambda x : 3*x**2,0,1,10000)) # integral de 3x^2 entre 0 i 1
-print(trapz(lambda x : x,0,1,1)) # integral de x entre 0 i 1
-
-# exemple de l'arctan
-f = lambda x : 1/(1 + x**2)
-a = 0; b = 5; N = 10
+# exemple sin(x) + 1
+f = lambda x : np.sin(x)+1
+a = 0; b = 4; N = 1
 
 # x and y values for the trapezoid rule
 x = np.linspace(a,b,N+1)
@@ -102,19 +76,22 @@ for i in range(N):
     ys = [0,f(x[i]),f(x[i+1]),0]
     plt.fill(xs,ys,'b',edgecolor='b',alpha=0.2)
 
-plt.title('arctan. Trapezoid Rule, N = {}'.format(N))
+plt.title('sin(x)+1. Trapezoid Rule, N = {}'.format(N))
 fig = plt.gcf()
 plt.show()
 if N==1:
-    fig.savefig("../img/T1/IN-11_trapezoid_arctan_simple.png")
+    fig.savefig("../img/T1/IN-11_trapezoid_sinx_mes_1_N1.png")
+elif N==2:
+    fig.savefig("../img/T1/IN-11_trapezoid_sinx_mes_1_N1.png")
 else:
-    fig.savefig("../img/T1/IN-31_trapezoid_arctan_compost.png")
+    fig.savefig("../img/T1/IN-31_trapezoid_sinx_mes_1_compost.png")
 
-# Let's compute the sum of areas of the trapezoids:
+# Regla del trapezi
 T = trapz(f,a,b,N)
-print(T) # 1.3731040812301096
-# We know the exact value and we can compare the trapezoid rule to the value
-I = np.arctan(5)
-print(I) # 1.373400766945016
-print("Trapezoid Rule Error:",np.abs(I - T)) # Trapezoid Rule Error: 0.00029668571490626405
+print("sin(x)+1")
+print("Valor: " + str(T)) # 5.631536018149299 (N=10)
 
+I = integrate.quad(lambda x: np.sin(x)+1, 0, 4 ) #càlcul del valor exacte
+print("Valor exacte: " + str(I[0])) # 5.653643620863611
+#I = 5 - np.cos(4) (analíticament)
+print("Trapezoid Rule Error:",np.abs(I[0] - T)) # Trapezoid Rule Error: 0.022107602714312335 (N=10)

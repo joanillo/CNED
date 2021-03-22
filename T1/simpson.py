@@ -10,6 +10,7 @@ python3 simpson.py
 
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.integrate as spi
 import os, sys
 # ==============
 os.system("clear")
@@ -54,28 +55,81 @@ def simps(f,a,b,N=50):
     S = dx/3 * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
     return S
 
-print ('\nexemple 3x^2+2:')
-res = simps(lambda x : 3*x**2,0,1,10)
-print(res) # 1
+print("================")
+def f1(x):
+    return 1/x
 
-print ('\nexemple sin(x):')
-res = simps(np.sin,0,np.pi/2,100)
-print(res) # 1
+print ('\nexemple 1/x, entre 1 i 2, N=2: Simpson simple:')
+approximation = simps(lambda x : f1(x),1,2,2) # N = 2 és el Simpson simple ( 2 subintervals )
+print("I1 = " + str(approximation) + " (implementació pròpia)")
 
-# ==============
+N = 2; a = 1; b = 2;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f1(x),x) # amb scipy
+print("I2 = " + str(approximation) + " (llibreria)")
 
-import scipy.integrate as spi
+I3 = spi.quad(lambda x: f1(x), 1, 2 )
+print("I3 = " + str(I3[0]) + " (calculant la integral amb scipy.integrate)")
 
-print ('\nexemple 1/x:')
-# 1/x entre 1 i 2
-approximation = simps(lambda x : 1/x,1,2,2) # N = 2 és el Simpson simple ( 2 subintervals )
-print(approximation) # amb la nostra implementació
-
-approximation = simps(lambda x : 1/x,1,2,8) # N>2 és el Simpson compost
-print(approximation) # amb la nostra implementació
+print ('\nexemple 1/x, entre 1 i 2, N=8: Simpson compost:')
+approximation = simps(lambda x : f1(x),1,2,8) # N>2 és el Simpson compost
+print("I1 = " + str(approximation))
 
 N = 8; a = 1; b = 2;
 x = np.linspace(a,b,N+1)
 y = 1/x
 approximation = spi.simps(y,x) # amb scipy
-print(approximation)
+print("I2 = " + str(approximation))
+print("I3 = " + str(I3[0]))
+
+print("================")
+def f2(x):
+    return 3*x**2+2
+
+print ('\nexemple 3x^2+2, entre 0 i 1, N=2: Simpson simple:')
+approximation = simps(lambda x : f2(x),0,1,2) # N = 2 és el Simpson simple ( 2 subintervals )
+print("I1 = " + str(approximation))
+
+N = 2; a=0; b=1;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f2(x),x) # amb scipy
+print("I2 = " + str(approximation))
+
+I3 = spi.quad(lambda x: f2(x), 0, 1 )
+print("I3 = " + str(I3[0]))
+
+print ('\nexemple 3x^2+2, entre 0 i 1, N=10: Simpson compost:')
+approximation = simps(lambda x : f2(x),0,1,10) # N>2 és el Simpson compost
+print("I1 = " + str(approximation))
+
+N = 10; a=0; b=1;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f2(x),x) # amb scipy
+print("I2 = " + str(approximation))
+print("I3 = " + str(I3[0]))
+
+print("================")
+def f3(x):
+    return np.sin(x)
+
+print ('\nexemple sin(x), entre 0 i pi/2, N=2: Simpson simple:')
+approximation = simps(lambda x : f3(x),0,np.pi/2,2) # N = 2 és el Simpson simple ( 2 subintervals )
+print("I1 = " + str(approximation))
+
+N = 2; a=0; b=np.pi/2;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f3(x),x) # amb scipy
+print("I2 = " + str(approximation))
+
+I3 = spi.quad(lambda x: f3(x), 0, np.pi/2 )
+print("I3 = " + str(I3[0]))
+
+print ('\nexemple sin(x), entre 0 i pi/2, N=100: Simpson compost:')
+approximation = simps(lambda x : f3(x),0,np.pi/2,100) # N>2 és el Simpson compost
+print("I1 = " + str(approximation))
+
+N = 100; a=0; b=np.pi/2;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f3(x),x) # amb scipy
+print("I2 = " + str(approximation))
+print("I3 = " + str(I3[0]))

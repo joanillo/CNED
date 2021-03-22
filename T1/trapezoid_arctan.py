@@ -1,15 +1,17 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
+IN-11, IN-31 (exemple arctan)
 https://www.math.ubc.ca/~pwalls/math-python/integration/trapezoid-rule/
 Integral amb el mètode del trapezoid simple (N=1) o compost (N>1)
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
-python3 erf.py
+python3 trapezoid_arctan.py
 '''
 
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+
 # ==============
 os.system("clear")
 titol = 'script ' + os.path.basename(__file__) + '\n'
@@ -53,9 +55,10 @@ def trapz(f,a,b,N=50):
     T = (dx/2) * np.sum(y_right + y_left)
     return T
 
-# exemple sin(x)+1
-f = lambda x : np.sin(x) + 1
-a = 0; b = 4; N = 1
+
+# exemple de l'arctan
+f = lambda x : 1/(1 + x**2)
+a = 0; b = 5; N = 1
 
 # x and y values for the trapezoid rule
 x = np.linspace(a,b,N+1)
@@ -64,29 +67,28 @@ y = f(x)
 # X and Y values for plotting y=f(x)
 X = np.linspace(a,b,100)
 Y = f(X)
+fig = plt.gcf()
 plt.plot(X,Y)
-#fig, ax = plt.subplots()
-#ax.plot(x, y)
 
 for i in range(N):
     xs = [x[i],x[i],x[i+1],x[i+1]]
     ys = [0,f(x[i]),f(x[i+1]),0]
     plt.fill(xs,ys,'b',edgecolor='b',alpha=0.2)
 
-plt.title('sin(x) + 1. Trapezoid Rule, N = {}'.format(N))
+plt.title('1/(1+x^2), arctan. Trapezoid Rule, N = {}'.format(N))
 fig = plt.gcf()
 plt.show()
-
 if N==1:
-    fig.savefig("../img/T1/IN-11_trapezoid2_simple.png")
+    fig.savefig("../img/T1/IN-11_trapezoid_arctan_N1.png")
+elif N==2:
+    fig.savefig("../img/T1/IN-11_trapezoid_arctan_N2.png")
 else:
-    fig.savefig("../img/T1/IN-37_trapezoid2_compost.png")
+    fig.savefig("../img/T1/IN-31_trapezoid_arctan_compost.png")
 
 # Let's compute the sum of areas of the trapezoids:
 T = trapz(f,a,b,N)
-print(T) # 5.513487172039481
+print("Valor: " + str(T)) # 1.3731040812301096
 # We know the exact value and we can compare the trapezoid rule to the value
-I = 5 - np.cos(4)
-print(I) # 5.653643620863612
-print("Trapezoid Rule Error:",np.abs(I - T)) # Trapezoid Rule Error: 0.14015644882413092
-
+I = np.arctan(5)
+print("Valor exacte (arctan(5)) : " + str(I)) # 1.373400766945016
+print("Trapezoid Rule Error:",np.abs(I - T)) # Trapezoid Rule Error: 0.00029668571490626405
