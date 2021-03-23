@@ -59,7 +59,17 @@ def trapz(f,a,b,N=50):
 
 # exemple sin(x) + 1
 f = lambda x : np.sin(x)+1
-a = 0; b = 4; N = 1
+a = 0; b = 4; N = 4
+
+# Regla del trapezi
+T = trapz(f,a,b,N)
+print("sin(x)+1")
+print("Valor: " + str(T)) # 5.631536018149299 (N=10)
+
+I = integrate.quad(lambda x: np.sin(x)+1, 0, 4 ) #càlcul del valor exacte
+print("Valor exacte: " + str(I[0])) # 5.653643620863611
+#I = 5 - np.cos(4) (analíticament)
+print("Trapezoid Rule Error:",np.abs(I[0] - T)) # Trapezoid Rule Error: 0.022107602714312335 (N=10)
 
 # x and y values for the trapezoid rule
 x = np.linspace(a,b,N+1)
@@ -85,13 +95,3 @@ elif N==2:
     fig.savefig("../img/T1/IN-11_trapezoid_sinx_mes_1_N1.png")
 else:
     fig.savefig("../img/T1/IN-31_trapezoid_sinx_mes_1_compost.png")
-
-# Regla del trapezi
-T = trapz(f,a,b,N)
-print("sin(x)+1")
-print("Valor: " + str(T)) # 5.631536018149299 (N=10)
-
-I = integrate.quad(lambda x: np.sin(x)+1, 0, 4 ) #càlcul del valor exacte
-print("Valor exacte: " + str(I[0])) # 5.653643620863611
-#I = 5 - np.cos(4) (analíticament)
-print("Trapezoid Rule Error:",np.abs(I[0] - T)) # Trapezoid Rule Error: 0.022107602714312335 (N=10)

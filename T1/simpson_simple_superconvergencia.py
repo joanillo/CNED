@@ -10,7 +10,6 @@ python3 simpson_simple_superconvergencia.py
 import numpy as np
 from scipy.interpolate import lagrange
 from scipy import integrate
-#import scipy.integrate as spi
 import os
 
 # ==============
@@ -20,8 +19,9 @@ for i in range(0,len(titol)-1):
     titol = titol + '='
 print(titol)
 # ==============
+print("Em mètode de Simpson simple integra perfectament polinomis de grau 2 i de grau 3.")
 
-print("Si tinc un polinomi de grau 2 i faig el mètode simple de Simpson (3 punts), segur que funciona perquè la interpolació de Lagrange ens diu que el polinomi interpolador (de grau 2), segur que serà el mateix polinomi que l'original")
+print("\nSi tinc un polinomi de grau 2 i faig el mètode simple de Simpson (3 punts), segur que funciona perquè la interpolació de Lagrange ens diu que el polinomi interpolador (de grau 2), segur que serà el mateix polinomi que l'original")
 print("x**2+4*x-2, entre 0 i 4")
 
 def f1(x):

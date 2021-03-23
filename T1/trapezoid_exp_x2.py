@@ -61,6 +61,16 @@ def trapz(f,a,b,N=50):
 f = lambda x : np.exp(-x**2)
 a = 0; b = 3; N = 1
 
+# Regla del trapezi
+T = trapz(f,a,b,N)
+print("exp(-x^2)")
+print("Valor: " + str(T)) # 1.50018511470613 (N=1)
+
+I = integrate.quad(lambda x: np.exp(-x**2), 0, 3 ) #càlcul del valor exacte
+print("Valor exacte: " + str(I[0])) # 0.8862073482595214 (N=1)
+print("Trapezoid Rule Error:",np.abs(I[0] - T)) # Trapezoid Rule Error: 0.8862073482595214 (N=1)
+
+# gràfica
 # x and y values for the trapezoid rule
 x = np.linspace(a,b,N+1)
 y = f(x)
@@ -85,12 +95,3 @@ elif N==2:
     fig.savefig("../img/T1/IN-11_trapezoid_exp_x2_N2.png")
 else:
     fig.savefig("../img/T1/IN-31_trapezoid_exp_x2_compost.png")
-
-# Regla del trapezi
-T = trapz(f,a,b,N)
-print("exp(-x^2)")
-print("Valor: " + str(T)) # 1.50018511470613 (N=1)
-
-I = integrate.quad(lambda x: np.exp(-x**2), 0, 3 ) #càlcul del valor exacte
-print("Valor exacte: " + str(I[0])) # 0.8862073482595214 (N=1)
-print("Trapezoid Rule Error:",np.abs(I[0] - T)) # Trapezoid Rule Error: 0.8862073482595214 (N=1)

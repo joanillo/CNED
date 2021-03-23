@@ -60,6 +60,15 @@ def trapz(f,a,b,N=50):
 f = lambda x : 1/(1 + x**2)
 a = 0; b = 5; N = 1
 
+# Let's compute the sum of areas of the trapezoids:
+T = trapz(f,a,b,N)
+print("Valor: " + str(T)) # 1.3731040812301096
+# We know the exact value and we can compare the trapezoid rule to the value
+I = np.arctan(5)
+print("Valor exacte (arctan(5)) : " + str(I)) # 1.373400766945016
+print("Trapezoid Rule Error:",np.abs(I - T)) # Trapezoid Rule Error: 0.00029668571490626405
+
+# gràfica
 # x and y values for the trapezoid rule
 x = np.linspace(a,b,N+1)
 y = f(x)
@@ -84,11 +93,3 @@ elif N==2:
     fig.savefig("../img/T1/IN-11_trapezoid_arctan_N2.png")
 else:
     fig.savefig("../img/T1/IN-31_trapezoid_arctan_compost.png")
-
-# Let's compute the sum of areas of the trapezoids:
-T = trapz(f,a,b,N)
-print("Valor: " + str(T)) # 1.3731040812301096
-# We know the exact value and we can compare the trapezoid rule to the value
-I = np.arctan(5)
-print("Valor exacte (arctan(5)) : " + str(I)) # 1.373400766945016
-print("Trapezoid Rule Error:",np.abs(I - T)) # Trapezoid Rule Error: 0.00029668571490626405
