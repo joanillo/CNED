@@ -58,7 +58,7 @@ def trapz(f,a,b,N=50):
 
 # exemple de l'arctan
 f = lambda x : 1/(1 + x**2)
-a = 0; b = 5; N = 1
+a = 0; b = 5; N = 10
 
 # Let's compute the sum of areas of the trapezoids:
 T = trapz(f,a,b,N)

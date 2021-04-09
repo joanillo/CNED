@@ -59,7 +59,7 @@ def trapz(f,a,b,N=50):
 
 # exemple e^(-x^2)
 f = lambda x : np.exp(-x**2)
-a = 0; b = 3; N = 1
+a = 0; b = 3; N = 5
 
 # Regla del trapezi
 T = trapz(f,a,b,N)

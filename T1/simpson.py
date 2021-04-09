@@ -109,6 +109,32 @@ print("I2 = " + str(approximation))
 print("I3 = " + str(I3[0]))
 
 print("================")
+def f2b(x):
+    return -x**3+3*x**2+2
+
+print ('\nexemple -x^3+3x^2+2, entre 0 i 1, N=2: Simpson simple:')
+approximation = simps(lambda x : f2b(x),0,1,2) # N = 2 és el Simpson simple ( 2 subintervals )
+print("I1 = " + str(approximation))
+
+N = 2; a=0; b=1;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f2b(x),x) # amb scipy
+print("I2 = " + str(approximation))
+
+I3 = spi.quad(lambda x: f2b(x), 0, 1 )
+print("I3 = " + str(I3[0]))
+
+print ('\nexemple -x^3+3x^2+2, entre 0 i 1, N=10: Simpson compost:')
+approximation = simps(lambda x : f2b(x),0,1,10) # N>2 és el Simpson compost
+print("I1 = " + str(approximation))
+
+N = 10; a=0; b=1;
+x = np.linspace(a,b,N+1)
+approximation = spi.simps(f2b(x),x) # amb scipy
+print("I2 = " + str(approximation))
+print("I3 = " + str(I3[0]))
+
+print("================")
 def f3(x):
     return np.sin(x)
 

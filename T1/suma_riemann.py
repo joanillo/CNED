@@ -21,7 +21,7 @@ print(titol)
 # ==============
 
 f = lambda x : 1/(1+x**2)
-a = 0; b = 5; N = 1
+a = 0; b = 5; N = 15
 
 
 #Let's compute the value of each of the Riemann sums:

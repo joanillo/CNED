@@ -1,11 +1,10 @@
 # Joan Quintana Compte-joanillo. Assignatura CNED (UPC-EEBE)
 '''
-IN-11, IN-31 (exemple arctan)
 https://www.math.ubc.ca/~pwalls/math-python/integration/trapezoid-rule/
 Integral amb el mètode del trapezoid simple (N=1) o compost (N>1)
 cd /home/joan/UPC_2021/CNED/apunts/python/T1/
 PS1="$ "
-python3 trapezoid_exp_x2.py
+python3 trapezoid_sinx_mes_1.py
 '''
 
 import numpy as np
