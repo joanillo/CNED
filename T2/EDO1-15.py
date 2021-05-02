@@ -72,3 +72,24 @@ plt.title('diferents condicions inicials', fontsize=10)
 plt.show()
 fig.savefig("../img/T2/EDO1-15.png")
 
+x_, y = np.meshgrid(np.linspace(0,4,25), np.linspace(-10, 40, 25))
+alfa = np.arctan(3*x_**2-4*x_)
+
+U=np.cos(alfa)*1
+V=np.sin(alfa) / 12.5 # factor d'escala dels eixos
+
+plt.figure()
+Q = plt.quiver(x_,y,U,V, units='width')
+plt.plot(t,y1,'r',linewidth=2,label='y(1)=4')
+plt.plot(t,y2,'b',linewidth=2,label='y(0)=2')
+plt.plot(t,y3,'g',linewidth=2,label='y(0)=-1')
+plt.plot(t,y4,'c',linewidth=2,label='y(0)=-4')
+plt.xlabel('time')
+plt.ylabel('y(t)')
+plt.legend()
+fig = plt.gcf()
+plt.suptitle('EDO, y\'(t) = 3t^2-4t. Sol: y(t) = t^3 - 2t^2 + C', fontsize=12)
+plt.title('diferents condicions inicials', fontsize=10)
+
+plt.show()
+fig.savefig("../img/T2/EDO1-15_v2.png")

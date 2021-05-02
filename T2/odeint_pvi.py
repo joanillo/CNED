@@ -42,12 +42,12 @@ print(sp.checkodesol(ode,sol)) #(True, 0)
 print('\nExemple 2: y\'= y')
 ode = sp.Eq(sp.Derivative(y(x),x),y(x))
 sol = sp.dsolve(ode,y(x))
-print(sol) # Eq(y(x), C1 + x**2 + x)
+print(sol) # Eq(y(x), C1*exp(x))
 print(sp.checkodesol(ode,sol)) #(True, 0)
 
 # solució amb PVI:
 print('CI: y(0)=1')
 sol = sp.dsolve(ode,y(x),ics={y(0):1})
-print(sol) # Eq(y(x), x**2 + x + 3)
+print(sol) # Eq(y(x), exp(x))
 #print(sp.latex(sol)) # printem en format LaTeX
 print(sp.checkodesol(ode,sol)) #(True, 0)
