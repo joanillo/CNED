@@ -25,15 +25,16 @@ print(titol)
 
 # per resoldre una eq diferencial de segon ordre, fem un sistema de dos equacions
 # amb dos incògnites, de primer ordre:
-# y' = u #u és la velocitat
-# u' = -y
+# 2n ordre: y'' = -y
+# y' = u #u és la velocitat (1r ordre)
+# u' = -y (1r ordre)
 
 def F(y, u, x):
     return -y
 
 a = 0
 b = 6.0
-N =100 # prova 1000, 100, 10, 5
+N =1000 # prova 1000, 100, 10, 5
 h = (b-a)/N
 
 xpoints = np.arange(a,b,h)

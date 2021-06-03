@@ -8,7 +8,7 @@ Cas 1: sistema amb amortiment crític (critically damped)
 ∆ = b^2 − 4mk = 0
 ============================================
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T2/
 PS1="$ "
 python3 sistema_massa-molla_amortit_critically_damped.py
 '''
@@ -54,14 +54,14 @@ ax.grid()
 fig.savefig("../img/T2/EDO2-25_sistema_massa-molla_amortit_critically_damped_v1.png")
 plt.show()
 
-v = C2*np.exp(s1*time_vec) - (C1 + C2*time_vec)*np.exp(s1*time_vec)
+v = C2*np.exp(s1*time_vec) + (C1 + C2*time_vec)*s1*np.exp(s1*time_vec)
 fig, ax1 = plt.subplots()
-ax2 = ax1.twinx()
+#ax2 = ax1.twinx()
 plt.plot(time_vec, y, label='y (b=' + str(b) + ')')
 plt.plot(time_vec, v, label='v (b=' + str(b) + ')')
 plt.legend(loc='best')
 ax1.set(xlabel='temps (s)', ylabel='y (m)', title='sistema massa-molla amb amortiment crític')
-ax2.set(ylabel='v (m/s)')
+#ax2.set(ylabel='v (m/s)')
 ax1.grid()
 fig.savefig("../img/T2/EDO2-25_sistema_massa-molla_amortit_critically_damped_v2.png")
 plt.show()

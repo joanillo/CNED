@@ -7,7 +7,7 @@ mx'' + bx' + kx = 0
 x'' + (b/m)x' + (k/m)x = 0
 x'' = (-b/m)x' - (k/m)x
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T2/
 PS1="$ "
 python3 sistema_massa-molla_amortit_v5_odeint.py
 '''

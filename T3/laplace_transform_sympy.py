@@ -33,15 +33,18 @@ print(f) # e−at
 
 #We can evaluate the integral directly using integrate:
 res = sympy.integrate(f*sympy.exp(-s*t), (t, 0, sympy.oo))
+print("\nCalculem la TL directament per la definició calculant la integral impròpia:")
 print(res)
 
 #20.2. Library function
 #This works, but it is a bit cumbersome to have all the extra stuff in there.
 
 #Sympy provides a function called laplace_transform which does this more efficiently. By default it will return conditions of convergence as well (recall this is an improper integral, with an infinite bound, so it will not always converge).
+print("\nUtilitzem laplace_transform de la llibreria sympy:") 
 res = sympy.laplace_transform(f, t, s)
 print(res) #(1a+s, 0, True)
 #If we want just the function, we can specify noconds=True.
+print("\no bé:") 
 F = sympy.laplace_transform(f, t, s, noconds=True)
 print(F) #1a+s
 
@@ -49,6 +52,7 @@ print(F) #1a+s
 def L(f):
     return sympy.laplace_transform(f, t, s, noconds=True)
 res = L(f)
+print("\no bé:") 
 print(res)
 
 #Inverses are simple as well,
@@ -56,13 +60,16 @@ def invL(F):
     return sympy.inverse_laplace_transform(F, s, t)
 
 res = invL(F)
+print("\nUn cop calculada la TL, podem calcular la TLI:") 
 print(res) #e−atθ(t)
-
+print("Efectivament hem recuperat la funció original, i θ(t) és la funció de Heaviside") 
 
 #20.3. What is that θ?
 #The unit step function is also known as the Heaviside step function. We will see this function often in inverse laplace transforms. It is typeset as θ(t) by sympy.
 
+print("\nFunció de Heaviside:") 
 print(sympy.Heaviside(t)) # θ(t)
+
 
 sympy.plot(sympy.Heaviside(t));
 
@@ -70,7 +77,7 @@ sympy.plot(sympy.Heaviside(t));
 res = invL(F).subs({a: 2})
 print(res) # e−2tθ(t)
 
-
+print("\nRepresentem la funció f=exp(-a*t) i el que hem trobat amb la TLI.") 
 p = sympy.plot(f.subs({a: 2}), invL(F).subs({a: 2}), xlim=(-1, 4), ylim=(0, 3), show=False)
 p[1].line_color = 'red'
 p.show()
@@ -93,33 +100,40 @@ functions = [1,
          exp(-a*t)*sin(omega*t),
          exp(-a*t)*cos(omega*t),
          ]
+print("\nAnem a calcular unes quantes TL de les funcions més importants:")
 print (functions)
 '''
 [1, t, e−at, te−at, t2e−at, sin(ωt), cos(ωt), 1−e−at, e−atsin(ωt), e−atcos(ωt)]
+'''
 Fs = [L(f) for f in functions]
-Fs
+print(Fs)
+'''
 [1s, 1s2, 1a+s, 1(a+s)2, 2(a+s)3, ωω2+s2, sω2+s2, as(a+s), ωω2+(a+s)2, a+sω2+(a+s)2]
 '''
 
 # 20.5. More complicated inverses
 # Why doesn’t the table feature more complicated functions? Because higher-order rational functions can be written as sums of simpler ones through application of partial fractions expansion.
-
+print("\nI ara unes TLI més complicades:")
 F = ((s + 1)*(s + 2)* (s + 3))/((s + 4)*(s + 5)*(s + 6))
 print(F) # (s+1)(s+2)(s+3)(s+4)(s+5)(s+6)
+print("Sabem fer la descomposició de fraccions:")
 res = F.apart(s) # descomposició en fraccions parcials 1 − 30/(s+6) + 24/(s+5) − 3/(s+4)
 print(res)
 
 #Even sympy can benefit from a little help sometimes. When we try to calculate the inverse of F we get a bit of a nasty answer:
 
 res = invL(F)
+print("\nI ara ja podem calcular la TLI:")
 print(res) # 3(e2t−2et+1)e−6tθ(t)−11(2e2t−5et+3)e−6tθ(t)+6(8e2t−25et+18)e−6tθ(t)+L−1s[s3s3+15s2+74s+120](t)
 
 #Perhaps it looks better if we simplify?
 
 res = invL(F).simplify()
+print("\nI ho simplifiquem:")
 print(res) # L−1s[s3s3+15s2+74s+120](t)+29e−4tθ(t)−101e−5tθ(t)+78e−6tθ(t)
 
 #No, it still features an "unknown" laplace transform. If we do the partial fractions expansion first, we get a clean answer:
 
+print("\nMillor fer-ho d'aquesta manera:")
 res = invL(F.apart(s))
 print(res) # δ(t)−3e−4tθ(t)+24e−5tθ(t)−30e−6tθ(t)

@@ -47,7 +47,7 @@ plt.show()
 
 fig, ax = plt.subplots()
 plt.plot(time_vec, y1,time_vec, y2,time_vec, y3)
-ax.set(xlabel='alpha', ylabel='', title='sèrie de Fourier de la funció quadrada')
+ax.set(xlabel='alpha', ylabel='', title='sèrie de Fourier de la funció triangle')
 ax.grid()
 plt.show()
 fig.savefig("../img/T3/SF-37_fourier_funcio_triangle.png")

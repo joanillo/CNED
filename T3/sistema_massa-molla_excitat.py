@@ -100,7 +100,7 @@ c=0.0 # sense esmorteïment
 freq = 1.0 # freqüència d'excitació
 omega = 2*np.pi*freq
 phi = 0 # phase shift
-A=15 # amplitud. No tenim excitació externa
+A=15 # amplitud. Tenim excitació externa
 
 state0 = [0.0, 1.2]  #initial conditions [x0 , v0]  [m, m/sec] 
 ti = 0.0  # initial time
@@ -142,7 +142,7 @@ c=0.0 # sense esmorteïment
 freq = 1.0 # freqüència d'excitació
 omega = 2*np.pi*freq
 phi = 0 # phase shift
-A=15 # amplitud. No tenim excitació externa
+A=15 # amplitud. Tenim excitació externa
 
 state0 = [0.0, 0.0]  #initial conditions [x0 , v0]  [m, m/sec] 
 ti = 0.0  # initial time
@@ -183,7 +183,7 @@ c=3.0  # damping coefficient
 freq = 1.0 # freqüència d'excitació
 omega = 2*np.pi*freq
 phi = 0 # phase shift
-A=15 # amplitud. No tenim excitació externa
+A=15 # amplitud. Tenim excitació externa
 
 state0 = [0.0, 0.0]  #initial conditions [x0 , v0]  [m, m/sec] 
 ti = 0.0  # initial time
@@ -225,7 +225,7 @@ c=0
 freq = 1.0 # freqüència d'excitació
 omega = 2*np.pi*freq
 phi = 0 # phase shift
-A=15 # amplitud. No tenim excitació externa
+A=15 # amplitud. Tenim excitació externa
 
 state0 = [0.0, 0.0]  #initial conditions [x0 , v0]  [m, m/sec] 
 ti = 0.0  # initial time

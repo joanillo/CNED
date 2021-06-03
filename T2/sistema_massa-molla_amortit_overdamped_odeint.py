@@ -9,7 +9,7 @@ mx'' + bx' + kx = 0
 x'' + (b/m)x' + (k/m)x = 0
 x'' = (-b/m)x' - (k/m)x
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T2/
 PS1="$ "
 python3 sistema_massa-molla_amortit_overdamped_odeint.py
 '''
@@ -39,12 +39,12 @@ yinit = (2, 0)
 yarr = odeint(calc_deri, yinit, time_vec, args=(m,k,b))
 
 fig, ax1 = plt.subplots()
-ax2 = ax1.twinx()
+#ax2 = ax1.twinx()
 plt.plot(time_vec, yarr[:, 0], label='y')
 plt.plot(time_vec, yarr[:, 1], label="y'")
 plt.legend(loc='best')
 ax1.set(xlabel='temps (s)', ylabel='y (m)', title='sistema massa-molla amb amortiment (odeint)')
-ax2.set(ylabel='v (m/s)')
+#ax2.set(ylabel='v (m/s)')
 ax1.grid()
 fig.savefig("../img/T2/EDO2-25_sistema_massa-molla_amortit_overdamped_odeint.png")
 plt.show()

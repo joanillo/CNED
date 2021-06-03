@@ -8,7 +8,7 @@ Cas 1: sistema subamortiguat (underdamped)
 ∆ = b^2 − 4mk < 0
 ============================================
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T2/
 PS1="$ "
 python3 sistema_massa-molla_amortit_underdamped.py
 '''
@@ -62,12 +62,12 @@ y[1] = np.exp(s[1]*time_vec)*(C1[1]*np.cos(w[1]*time_vec) + C2[1]*np.sin(w[1]*ti
 v[1] = np.exp(s[1]*time_vec)*((s[1]*C1[1]+w[1]*C2[1])*np.cos(w[1]*time_vec) + (s[1]*C2[1]-w[1]*C1[1])*np.sin(w[1]*time_vec))
 
 fig, ax1 = plt.subplots()
-ax2 = ax1.twinx()
+#ax2 = ax1.twinx()
 plt.plot(time_vec, y[1], label='y (b=' + str(b[1]) + ')')
 plt.plot(time_vec, v[1], label='v (b=' + str(b[1]) + ')')
 plt.legend(loc='best')
 ax1.set(xlabel='temps (s)', ylabel='y (m)', title='sistema massa-molla amb amortidor subamortiguat')
-ax2.set(ylabel='v (m/s)')
+#ax2.set(ylabel='v (m/s)')
 ax1.grid()
 fig.savefig("../img/T2/EDO2-28_sistema_massa-molla_amortit_underdamped_v2.png")
 plt.show()

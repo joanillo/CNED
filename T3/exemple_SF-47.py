@@ -2,7 +2,7 @@
 '''
 Exemple SF-47
 
-cd /home/joan/UPC_2021/CNED/apunts/python/
+cd /home/joan/UPC_2021/CNED/apunts/python/T3/
 PS1="$ "
 python3 exemple_SF-47.py
 '''
@@ -72,6 +72,6 @@ for i in range(len(freq)):
     plt.annotate(coef[i], (-0.1 + i, coef[i] + j))
 plt.title("Fases de la forma harmònica")
 plt.xlabel('fases')
-plt.ylabel('Cn')
+plt.ylabel('Phi_n')
 plt.show()
 fig.savefig("../img/T3/SF-47_exemple_fases.png")

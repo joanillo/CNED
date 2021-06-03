@@ -53,8 +53,17 @@ ax.set(xlabel='-L a L', ylabel='', title='sèrie de Fourier del rectificador de 
 ax.grid()
 plt.show()
 
+y5 = y4 - 2/(np.pi*63)*np.cos(8*np.pi*time_vec)
+
 fig, ax = plt.subplots()
-plt.plot(time_vec, y1,time_vec, y2,time_vec, y3,time_vec, y4)
+plt.plot(time_vec, y5)
+ax.set(xlabel='-L a L', ylabel='', title='sèrie de Fourier del rectificador de mitja ona (diode)')
+ax.grid()
+plt.show()
+
+
+fig, ax = plt.subplots()
+plt.plot(time_vec, y1,time_vec, y2,time_vec, y3,time_vec, y4,time_vec, y5)
 ax.set(xlabel='-L a L', ylabel='', title='sèrie de Fourier del rectificador de mitja ona (diode)')
 ax.grid()
 plt.show()
